@@ -5,7 +5,7 @@ package com.zyt.tropical.exception;
  * @Author: 林辉煌 huihuang.lin@luckincoffee.com
  * @Date: 2019/7/27 17:35
  **/
-public class BusiException extends EverythingException {
+public class BusiException extends TropcialException {
     public BusiException(String msg) {
         super(msg);
     }

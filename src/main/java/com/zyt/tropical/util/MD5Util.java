@@ -1,5 +1,6 @@
 package com.zyt.tropical.util;
 
+import org.springframework.util.Assert;
 import org.springframework.util.DigestUtils;
 
 /**
@@ -25,6 +26,9 @@ public class MD5Util {
      * @return 加盐后密码
      */
     public static String salt(String rawPass, String salt) {
+        Assert.notNull(rawPass);
+        Assert.notNull(salt);
+        Assert.isTrue(salt.length() >= 8);
         String saltedPass = salt.charAt(5) + salt.charAt(0) + rawPass + salt.charAt(2) + salt.charAt(7);
         return saltedPass;
     }

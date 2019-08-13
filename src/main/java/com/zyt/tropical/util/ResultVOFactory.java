@@ -36,22 +36,13 @@ public class ResultVOFactory {
         return new ResultVO(SUCCESS_CODE, SUCCESS_MSG, data);
     }
 
-    public static ResultVO busiError() {
-        return new ResultVO(BUSI_ERROR_CODE, BUSI_ERROR_MSG, null);
+    public static <T> ResultVO busiError(String msg) {
+        return new ResultVO(BUSI_ERROR_CODE, msg, null);
     }
 
-    public static <T> ResultVO busiError(T data) {
-        return new ResultVO(BUSI_ERROR_CODE, BUSI_ERROR_MSG, data);
+    public static <T> ResultVO sysError(String msg) {
+        return new ResultVO(SYS_ERROR_CODE, msg, null);
     }
-
-    public static ResultVO sysError() {
-        return new ResultVO(SYS_ERROR_CODE, SYS_ERROR_MSG, null);
-    }
-
-    public static <T> ResultVO sysError(T data) {
-        return new ResultVO(SYS_ERROR_CODE, SYS_ERROR_MSG, data);
-    }
-
 
     public static ResultVO illegalRequError() {
         return new ResultVO(ILLEGAL_REQUEST_ERROR_CODE, ILLEGAL_REQUEST_ERROR_MSG, null);

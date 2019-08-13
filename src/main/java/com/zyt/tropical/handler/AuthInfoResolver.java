@@ -4,9 +4,10 @@ import com.zyt.tropical.config.GlobalConfig;
 import com.zyt.tropical.exception.AuthException;
 import com.zyt.tropical.pojo.dto.AuthInfoDTO;
 import com.zyt.tropical.util.CookieUtil;
-import com.zyt.tropical.util.jwt.JWTHelper;
+import com.zyt.tropical.util.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -16,10 +17,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Description:
+ * @Description: AuthInfo 参数解析器
  * @Author: 林辉煌 huihuang.lin@luckincoffee.com
  * @Date: 2019/7/31 16:24
  **/
+@Component
 public class AuthInfoResolver implements HandlerMethodArgumentResolver {
 
     @Autowired
@@ -35,7 +37,7 @@ public class AuthInfoResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        HttpServletRequest request = (HttpServletRequest) webRequest;
+        HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
         String token = CookieUtil.get(request, GlobalConfig.AUTH_FLAG);
         if (StringUtils.isEmpty(token)) {
             return null;

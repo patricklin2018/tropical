@@ -1,4 +1,3 @@
-# 数据源
 druid:
   driverClassName: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://47.100.250.62:3306/tropical?characterEncoding=UTF-8&allowMultiQueries=true
@@ -12,9 +11,7 @@ druid:
   connectionProperties: config.decrypt=true;config.decrypt.key=${druid.publicKey};password=${druid.password};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000
   fileters: config,stat,wall,log4j
   useGlobalDataSourceStat: true
-
-  # JWT
-  jwt:
-    alg: HS256
-    type: jwt
-    privateSecret: ABSEFG123456
+jwt:
+  alg: HS256
+  type: jwt
+  privateSecret: ABSEFG123456
