@@ -1,5 +1,5 @@
 // 域名
-var host = "http://www.tropical.com";
+// var host = "http://www.tropical.com/tropical";
 
 // ajax封装
 function ajax(url, type, async) {

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -42,13 +41,13 @@ public class EmpEntryController {
      * 登录
      */
     @PostMapping(value = "/login")
-    public ResultVO login(LoginForm loginForm, AuthInfoDTO authInfoDTO, HttpServletRequest request, HttpServletResponse response) {
+    public ResultVO login(LoginForm loginForm, AuthInfoDTO authInfoDTO, HttpServletResponse response) {
         if (authInfoDTO != null) {
             // 刷新token
-            jwtHelper.refresh(authInfoDTO, 1800, request);
+            jwtHelper.publish(authInfoDTO, 1800, response);
         }
         EmpDO empDO = empService.login(loginForm);
-        jwtHelper.publish(new AuthInfoDTO(empDO), 1800, request);
+        jwtHelper.publish(new AuthInfoDTO(empDO), 1800, response);
         return ResultVOFactory.success(empDO);
     }
 

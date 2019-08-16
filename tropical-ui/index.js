@@ -20,7 +20,7 @@ $(function () {
 
 // 获取用户信息
 function getUserInfo() {
-    var res = ajax(host + "/me", 'get', false);
+    var res = ajax("/me", 'get', false);
     if (res == null) {
         layer.msg("网络异常，请稍后重试", function () {
         });
@@ -37,7 +37,7 @@ function getUserInfo() {
 
 // 获取菜单信息
 function getMenus() {
-    var res = ajax(host + "/menus", 'get', false);
+    var res = ajax("/menus", 'get', false);
     if (res == null) {
         layer.msg("网络异常，请稍后重试", function () {
         });
