@@ -23,6 +23,7 @@ $(function () {
                 data: data.field,
                 success: function (res) {
                     if (res.code == 0) {
+                        document.cookie = "token=" + res.data + "; path=/";
                         layer.msg("登录成功", {
                             time: 1500
                         }, function () {

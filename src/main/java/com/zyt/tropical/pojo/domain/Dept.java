@@ -1,10 +1,9 @@
 package com.zyt.tropical.pojo.domain;
 
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * @Description: 部门 DO 对象
@@ -12,14 +11,11 @@ import javax.persistence.Table;
  * @Date: 2019/7/17 16:52
  **/
 @Data
-@Entity
-@Table(name = "t_dept")
-public class DeptDO {
+public class Dept extends Model<Dept> {
 
     /**
      * Id
      */
-    @Id
     private Integer id;
 
     /**
@@ -56,5 +52,25 @@ public class DeptDO {
      * 是否删除
      */
     private Integer valid;
+
+    /**
+     * 创建时间
+     */
+    protected Date createTime;
+
+    /**
+     * 创建人
+     */
+    protected String createName;
+
+    /**
+     * 更新时间
+     */
+    protected Date updateTime;
+
+    /**
+     * 更新人
+     */
+    protected String updateName;
 
 }

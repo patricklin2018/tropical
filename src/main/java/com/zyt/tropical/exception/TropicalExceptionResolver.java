@@ -49,7 +49,7 @@ public class TropicalExceptionResolver {
             return new ResultVO(400, "绑定异常", null);
         }
         else {
-            log.error("【全局异常捕获】捕获未知异常，参考信息：msg={}, url={}, params={}", e.getMessage(), url, params);
+            log.error("【全局异常捕获】捕获未知异常，参考信息：msg={}, url={}, params={}, {}", e.getMessage(), url, params);
             return ResultVOFactory.unknownError();
         }
     }

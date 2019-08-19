@@ -1,5 +1,4 @@
 druid:
-  driverClassName: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://47.100.250.62:3306/tropical?characterEncoding=UTF-8&allowMultiQueries=true
   username: patrick
   password: EetLXUQHm5IFbv/oboBNKTPO+hDHz7RuQi4QKSl7Yn7vk3D3w8eAEC9RBHot/U3idZgfnyNJlq0dhYPPj/zCsw==
@@ -8,10 +7,21 @@ druid:
   minIdle: 1
   maxActive: 20
   maxWait: 60000
-  connectionProperties: config.decrypt=true;config.decrypt.key=${druid.publicKey};password=${druid.password};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000
-  fileters: config,stat,wall,log4j
-  useGlobalDataSourceStat: true
+
 jwt:
   alg: HS256
   type: jwt
   privateSecret: ABSEFG123456
+
+spring:
+  redis:
+    host: 47.100.250.62
+    port: 6379
+    password: Beconfident1
+    poolMaxTotal: 100
+    poolMaxIdle: 50
+    poolMaxWait: 50
+    timeout: 5000ms
+    jedis:
+      pool:
+        min-idle: 1

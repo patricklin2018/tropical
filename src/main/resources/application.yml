@@ -8,5 +8,14 @@ spring:
 server:
   # 端口
   port: 8080
-  servlet:
-    context-path: /tropical
+
+druid:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  connectionProperties: config.decrypt=true;config.decrypt.key=${druid.publicKey};password=${druid.password};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000
+  fileters: config,stat,wall,log4j
+  useGlobalDataSourceStat: true
+
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: t_

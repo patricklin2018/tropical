@@ -6,10 +6,20 @@ package com.zyt.tropical.config;
  * @Date: 2019/8/3 14:12
  **/
 public final class GlobalConfig {
-    public static final String AUTH_FLAG = "jwt";
 
     /**
-     * 超级管理员标记，工号
+     * 令牌头部key
      */
-    public static final String ADMIN_FLAG = "admin";
+    public static final String TOKEN_FLAG = "token";
+
+    /**
+     * 令牌有效期
+     */
+    public static final Integer AUTH_EXPIRED_SECONDS = 1800;
+
+    /**
+     * Redis缓存令牌前缀
+     */
+    public static final String TOKEN_CACHE_PREFIX = "token:";
+
 }

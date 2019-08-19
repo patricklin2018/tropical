@@ -21,6 +21,8 @@
         <log4j.version>1.3.8.RELEASE</log4j.version>
         <feign.version>1.4.6.RELEASE</feign.version>
         <fastjson.version>1.2.58</fastjson.version>
+        <jedis.version>2.9.0</jedis.version>
+        <mybatis.plus.version>3.1.2</mybatis.plus.version>
     </properties>
 
     <!-- 环境变量 -->
@@ -73,10 +75,11 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!-- jpa -->
+        <!-- mybatis plus -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
         </dependency>
 
         <!-- lombok -->
@@ -84,13 +87,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <!-- jwt -->
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>3.1.0</version>
         </dependency>
 
         <!-- fastjson -->
@@ -107,6 +103,11 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <!-- spring data redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
     </dependencies>
 

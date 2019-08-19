@@ -1,6 +1,6 @@
 package com.zyt.tropical.config;
 
-import com.zyt.tropical.handler.AuthInfoResolver;
+import com.zyt.tropical.handler.UserInfoResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -18,7 +18,7 @@ import java.util.List;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
-    private AuthInfoResolver authInfoResolver;
+    private UserInfoResolver userInfoResolver;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -33,6 +33,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         super.addArgumentResolvers(argumentResolvers);
-        argumentResolvers.add(authInfoResolver);
+        argumentResolvers.add(userInfoResolver);
     }
 }

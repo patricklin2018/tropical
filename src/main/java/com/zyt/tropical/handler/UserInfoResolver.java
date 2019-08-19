@@ -2,11 +2,10 @@ package com.zyt.tropical.handler;
 
 import com.zyt.tropical.config.GlobalConfig;
 import com.zyt.tropical.exception.AuthException;
-import com.zyt.tropical.pojo.dto.AuthInfoDTO;
-import com.zyt.tropical.util.CookieUtil;
-import com.zyt.tropical.util.JWTHelper;
+import com.zyt.tropical.pojo.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -22,14 +21,14 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2019/7/31 16:24
  **/
 @Component
-public class AuthInfoResolver implements HandlerMethodArgumentResolver {
+public class UserInfoResolver implements HandlerMethodArgumentResolver {
 
     @Autowired
-    private JWTHelper jwtHelper;
+    private RedisTemplate redisTemplate;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        if (parameter.getParameterType().isAssignableFrom(AuthInfoDTO.class)) {
+        if (parameter.getParameterType().isAssignableFrom(UserInfo.class)) {
             return true;
         }
         return false;
@@ -38,13 +37,13 @@ public class AuthInfoResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
-        String token = CookieUtil.get(request, GlobalConfig.AUTH_FLAG);
+        String token = request.getHeader(GlobalConfig.TOKEN_FLAG);
         if (StringUtils.isEmpty(token)) {
             return null;
         }
         try {
-            AuthInfoDTO authInfoDTO = jwtHelper.parse(token);
-            return authInfoDTO;
+            UserInfo userInfoResolver = (UserInfo) redisTemplate.opsForValue().get(GlobalConfig.TOKEN_CACHE_PREFIX + token);
+            return userInfoResolver;
         } catch (AuthException e) {
             return null;
         }

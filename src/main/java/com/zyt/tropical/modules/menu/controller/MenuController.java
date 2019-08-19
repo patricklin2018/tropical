@@ -1,7 +1,8 @@
 package com.zyt.tropical.modules.menu.controller;
 
-import com.zyt.tropical.pojo.dto.AuthInfoDTO;
+import com.zyt.tropical.pojo.dto.UserInfo;
 import com.zyt.tropical.pojo.vo.ResultVO;
+import com.zyt.tropical.util.ResultVOFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuController {
 
     @GetMapping("/menus")
-    public ResultVO menus(AuthInfoDTO authInfoDTO) {
+    public ResultVO menus(UserInfo authInfoDTO) {
         if (authInfoDTO == null) {
             // throw new AuthException("请先完成登录");
         }
-        return null;
+        return ResultVOFactory.success();
     }
 
 }

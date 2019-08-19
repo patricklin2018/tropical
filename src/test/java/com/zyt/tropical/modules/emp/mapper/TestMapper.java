@@ -1,31 +1,28 @@
-package com.zyt.tropical.modules.emp.dao;
+package com.zyt.tropical.modules.emp.mapper;
 
 import com.alibaba.fastjson.JSON;
-import com.zyt.tropical.pojo.domain.EmpDO;
+import com.zyt.tropical.mapper.EmpMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 /**
  * @Description:
  * @Author: 林辉煌 huihuang.lin@luckincoffee.com
- * @Date: 2019/8/3 14:08
+ * @Date: 2019/8/19 18:07
  **/
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class EmpRepoTest {
+public class TestMapper {
 
     @Autowired
-    private EmpRepo empRepo;
+    private EmpMapper empMapper;
 
     @Test
-    public void test() {
-        List<EmpDO> res = empRepo.findAll();
-        System.out.println(JSON.toJSONString(res));
+    public void test1() {
+        System.out.println(JSON.toJSONString(empMapper.selectList(null)));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.zyt.tropical.modules.emp.service;
 
-import com.zyt.tropical.pojo.domain.EmpDO;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.zyt.tropical.pojo.domain.Emp;
 import com.zyt.tropical.pojo.form.LoginForm;
 
 /**
@@ -8,13 +9,15 @@ import com.zyt.tropical.pojo.form.LoginForm;
  * @Author: 林辉煌 huihuang.lin@luckincoffee.com
  * @Date: 2019/7/18 15:18
  **/
-public interface EmpService {
+public interface EmpService extends IService<Emp> {
 
     /**
      * 登录
+     *
      * @param loginForm 登录表单
-     * @return 员工信息
+     * @return token
      */
-    EmpDO login(LoginForm loginForm);
+    String login(LoginForm loginForm);
+
 
 }

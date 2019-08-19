@@ -1,18 +1,27 @@
 package com.zyt.tropical.pojo.domain;
 
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
-import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 /**
- * @Description: 基础 DO 对象
+ * @Description: 角色DO
  * @Author: 林辉煌 huihuang.lin@luckincoffee.com
- * @Date: 2019/7/17 16:28
+ * @Date: 2019/8/13 13:51
  **/
 @Data
-@MappedSuperclass
-public class BaseDO {
+public class Role extends Model<Role> {
+
+    /**
+     * Id
+     */
+    private Integer id;
+
+    /**
+     * 名称
+     */
+    private String name;
 
     /**
      * 创建时间

@@ -26,7 +26,7 @@ public class ObjectUtil {
             Field[] fields = obj.getClass().getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
-                res.put(field.getName(), field.get(obj).toString());
+                res.put(field.getName(), String.valueOf(field.get(obj)));
             }
         } catch (Exception e) {
             throw new RuntimeException("对象转换异常");
